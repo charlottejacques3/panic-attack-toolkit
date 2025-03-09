@@ -5,7 +5,7 @@ import { getDatabase, ref, set, push, onValue } from "firebase/database";
 import './SelfcareList.css';
 import SelfcareItem from "./SelfcareItem";
 
-function SelfcareList() {
+function SelfcareList({onOpen}) {
     const [selfcareData, setSelfcareData] = useState([]);
   
     function handleSubmit(event) {
@@ -39,14 +39,13 @@ function SelfcareList() {
   
         // Listen for changes in the collection
         onValue(collectionRef, (snapshot) => {
-          const dataItem = snapshot.val();
-  
-          // Check if dataItem exists
-          if (dataItem) {
-            // Convert the object values into an array
-            const displayItem = Object.values(dataItem);
-
-            setSelfcareData(displayItem);
+          if (snapshot.exists()) {
+            const items = Object.entries(snapshot.val()).map(([key, value]) => ({
+              id: key.toString(),
+              item: value['item'], 
+            }));
+            console.log(items); 
+            setSelfcareData(items);
           }
         });
       };
@@ -57,13 +56,13 @@ function SelfcareList() {
     <div id = "body">
         <h1 id="selfcare-h1">Self Care Ideas</h1>
         {selfcareData.map((item, index) => (
-          <SelfcareItem key={index} item={item['item']} />
+          <SelfcareItem key={item['id']} item={item['item']} id={item['id']} />
         ))}
         <form id="selfcare-form" onSubmit={handleSubmit}>
           <input type="text" name="newItem" id="new-item"/>
           <button type="submit">Add</button>
         </form>
-        <button>Suggest</button>
+        <button onClick={onOpen}>Suggest</button>
       </div>
     );
 }

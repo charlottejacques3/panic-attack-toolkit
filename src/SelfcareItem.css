@@ -12,5 +12,13 @@ li {
 }
 
 .del-button {
-    float: right;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+    height: 30px;
+}
+
+#delete-icon {
+    height: 30px;
+    width: 30px;;
 }
