@@ -1,19 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { getDatabase, ref, set, push, onValue } from "firebase/database";
 
 // referenced tutorial: https://deadsimplechat.com/blog/creating-a-reusable-pop-up-modal-in-react-from-scratch/
 
 
 function SuggestionPopup({ onClose }) {
 
-    function randomSuggestion() {
-        const suggestions = [
-            'Go for a walk',
-            'Call a friend',
-            'Go for a run',
-            'Listen to music',
-            'Watch funny videos'
-        ];
-        const randomIndex = Math.floor(Math.random() * suggestions.length);
+    const [suggestions, updateSuggestions] = useState([
+        'Go for a walk',
+        'Call a friend',
+        'Go for a run',
+        'Listen to music',
+        'Watch funny videos']);
+    const [suggestion, regenerateSuggestion] = useState(randomSuggestion(true));
+
+    function saveSuggestion() {
+
+        //save to database
+        const db = getDatabase();
+        const selfcareRef = ref(db, 'Selfcare');
+        const newSelfcareRef = push(selfcareRef);
+        set(newSelfcareRef, {
+            item: suggestion
+        });
+
+        //remove item from list of suggestions
+        updateSuggestions(suggestions.filter(s => s !== suggestion));
+
+        onClose();
+    }
+
+    function randomSuggestion(initial) {
+        // const suggestions = [
+        //     'Go for a walk',
+        //     'Call a friend',
+        //     'Go for a run',
+        //     'Listen to music',
+        //     'Watch funny videos'
+        // ];
+        var randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * suggestions.length);
+        } while (!initial && suggestion != null && suggestion === suggestions[randomIndex]);
         return suggestions[randomIndex];
     }
 
@@ -21,8 +49,9 @@ function SuggestionPopup({ onClose }) {
         <div style={styles.overlay}>
             <div style={styles.modal}>
                 <h2>Here's a suggestion for you:</h2>
-                <p>{randomSuggestion()}</p>
-                
+                <p>{suggestion}</p>
+                <button onClick={() => regenerateSuggestion(randomSuggestion(false))}>Refresh</button>
+                <button onClick={saveSuggestion}>Add This</button>
                 <button style={styles.closeButton} onClick={onClose}>X</button>
             </div>
         </div>
