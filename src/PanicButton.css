@@ -1,0 +1,31 @@
+.PANIC-BUTTON {
+    width: 263px;
+    height: 209px;
+  }
+  
+  .PANIC-BUTTON .p-BUTTON {
+    width: 265px;
+    height: 209px;
+  }
+  
+  .PANIC-BUTTON .overlap-group {
+    position: relative;
+    width: 264px;
+    height: 210px;
+    /* background-image: url(./img/button.png); */
+    background-size: 100% 100%;
+  }
+  
+  .PANIC-BUTTON .text-wrapper {
+    position: absolute;
+    width: 203px;
+    top: 18px;
+    left: 38px;
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 64px;
+    letter-spacing: -1.09px;
+    line-height: normal;
+    white-space: nowrap;
+  }

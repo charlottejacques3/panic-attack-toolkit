@@ -1,0 +1,22 @@
+#support-list {
+    background-color: #0E0E2C;
+    margin: 20px;
+
+}
+
+h1 {
+    color: white;
+}
+
+button {
+    background-color: #cacadb;
+    color: black;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#support-form {
+    color: white;
+}

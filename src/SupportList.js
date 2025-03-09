@@ -2,9 +2,13 @@
 import React, { useEffect, useState } from "react";
 import app from "./configuration"; 
 import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import './SupportList.css';
+import ContactDetail from "./ContactDetail";
+// import { Button } from '@mui/material';
 
 function SupportList() {
     const [data, setData] = useState([]);
+    const [adding, setAdding] = useState(false);
   
     function handleSubmit(event) {
       console.log('submitted form');
@@ -56,32 +60,26 @@ function SupportList() {
         <script>
 
         </script>
-        <div>
+        <div id = "support-list">
             <h1>Support</h1>
-            <table>
-                <tr>
-                    <td>Emergency</td>
-                    <td>911</td>
-                </tr>
-                <tr>
-                    <td>Suicide Prevention Line</td>
-                    <td>(number)</td>
-                </tr>
-                {data.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item['name']}</td>
-                        <td>{item['phone']}</td>
-                    </tr>
-                ))}
-            </table>  
+            <ContactDetail name="Emergency" phone="911"/>
+            <ContactDetail name="Suicide Prevention Line" phone="[phone]"/>
+            {data.map((item, index) => (
+                <ContactDetail key={index} name={item['name']} phone={item['phone']}/>
+            ))}
 
-            <form id="support-form" onSubmit={handleSubmit}>
+            {adding && <form id="support-form" onSubmit={handleSubmit}>
                 <label>Name: </label>
                 <input type="text" name="name"/>
+                <br/>
                 <label>Phone Number: </label>
                 <input type="tel" name="phone"/>
-                <button type="submit">Add</button>
-            </form>
+                <br></br>
+                <button onClick={() => setAdding(false)}>Cancel</button>
+                <button type="submit">Save</button>
+            </form>}
+
+            <button onClick={() => setAdding(true)}>Add New Contact</button>
         </div>
     </>
     
