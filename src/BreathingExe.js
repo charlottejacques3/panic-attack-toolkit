@@ -6,59 +6,38 @@ import play from "./images/play_button.png";
 import pause from './images/pause.png';
 import './BreathingExe.css';
 import Countdown, { CountdownApi } from 'react-countdown';
+import NewTimer from "./NewTimer";
+import Sound from 'react-sound';
+import music from './images/music.mp3';
 
 //icons from flaticon
+/**music:
+Music track: Meditation by Aylex
+Source: https://freetouse.com/music
+No Copyright Background Music
+ */
 
 function BreathingExercise(){
     const stages = ['Inhale', 'Hold', 'Exhale', 'Hold'];
-    const [playing, setPlaying] = useState(false);//not playing show play button
     const [stageIndex, setStageIndex] = useState(0);
-    
-    const [k, setK] = useState(false);
-    var countdownApi = null;
-
-    function handlePause() {
-        if (playing) {
-            countdownApi && countdownApi.pause();
-        } else {
-            countdownApi && countdownApi.start();
-        }
-        setPlaying(!playing)
-    }
-
-    function setRef(countdown) {
-        if (countdown) {
-            countdownApi = countdown.getApi();
-        }
-    }
-
-    function onTimerComplete() {
-        stageIndex < 3 ? setStageIndex(stageIndex + 1) : setStageIndex(0);
-        setK(!k);
-    }
-
-    const renderer = ({seconds}) => {
-        return <h2> {seconds})</h2>;
-    }
+    const [isPlaying, setIsPlaying] = useState(false);
 
     return (
         <div className="breathe">
             <div className="inhale-exhale">
                 <h2>{stages[stageIndex] + ' ('}</h2>
                 <br/>
-                <Countdown 
-                    date={Date.now() + 4000} 
-                    key={k}
-                    onComplete={onTimerComplete}
-                    renderer={renderer}
-                    controlled={false}
-                    autoStart={false}
-                    ref={setRef}
-                />
+                <NewTimer isPlaying={isPlaying} changeStage={() => stageIndex < 3 ? setStageIndex(stageIndex + 1) : setStageIndex(0)}/>
             </div>
+            <Sound
+                url={music}
+                playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.PAUSED}
+                volume={50}
+            />
             
-            <button id ='play-pause' onClick={handlePause}>
-                {playing ? <img src={pause} alt="pause"/> 
+            
+            <button id ='play-pause' onClick={() => setIsPlaying(!isPlaying)}>
+                {isPlaying ? <img src={pause} alt="pause"/> 
                 : <img src={play} alt="play"/>}
             </button>
         </div>
