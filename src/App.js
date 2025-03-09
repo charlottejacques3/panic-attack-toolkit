@@ -10,13 +10,12 @@ function App() {
 
   return (
     <div id="app">
-      <div id="support-list">
+      <div class="section" id="support-list">
       <SupportList></SupportList>
       </div>
-      <div id="selfcare-list">
+      <div class="section" id="selfcare-list">
       <SelfcareList></SelfcareList>
       </div>
-      {/* <PanicButton></PanicButton> */}
     </div>
   );
 }

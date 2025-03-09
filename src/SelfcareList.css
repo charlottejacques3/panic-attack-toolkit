@@ -1,0 +1,16 @@
+#body {
+    border: 1px solid grey;
+    margin: 20px;
+    padding: 10px;
+    font-family: 'Just Another Hand', cursive;
+}
+
+#selfcare-h1 {
+    color: #0E0E2C;
+    font-size: 40px;
+}
+
+#new-item {
+    border-bottom: 1px solid blue;
+    width: 85%;
+}

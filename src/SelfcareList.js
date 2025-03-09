@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import app from "./configuration"; 
 import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import './SelfcareList.css';
+import SelfcareItem from "./SelfcareItem";
 
 function SelfcareList() {
     const [selfcareData, setSelfcareData] = useState([]);
@@ -52,17 +54,16 @@ function SelfcareList() {
     }, []);
   
     return (
-    <div>
-        <h1>Self Care Ideas</h1>
-        <ul>
-          {selfcareData.map((item, index) => (
-            <li key={index}>{item['item']}</li>
-          ))}
-        </ul>
+    <div id = "body">
+        <h1 id="selfcare-h1">Self Care Ideas</h1>
+        {selfcareData.map((item, index) => (
+          <SelfcareItem key={index} item={item['item']} />
+        ))}
         <form id="selfcare-form" onSubmit={handleSubmit}>
-          <input type="text" name="newItem"/>
+          <input type="text" name="newItem" id="new-item"/>
           <button type="submit">Add</button>
         </form>
+        <button>Suggest</button>
       </div>
     );
 }
