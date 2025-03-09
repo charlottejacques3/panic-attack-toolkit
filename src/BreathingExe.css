@@ -1,16 +1,14 @@
 .breathe {
-    border: 1px solid black;
     width: 100%;
-    height: 500px;
+    aspect-ratio: 1/1.5;
+    position: relative;
     background-image: url(./images/photo_with_arrows.png);
     background-size: contain;
     background-position: top;
     background-repeat: no-repeat;
-    /* float: left; */
     margin: 20px;
     padding: 5px;
     margin-right: 15px;
-    /* display: flex; */
 }
 
 .inhale-exhale {

@@ -1,13 +1,20 @@
-#support-list {
+#contact-list {
     background-color: #0E0E2C;
     margin: 20px;
+    padding: 20px;
 
 }
 
 #support-h1 {
     color: white;
+    font-weight: bold;
 }
 
 #support-form {
     color: white;
+}
+
+#support-form input {
+    /* background-color: red; */
+    border-bottom: 1px solid grey;
 }

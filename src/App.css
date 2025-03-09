@@ -41,6 +41,18 @@ h1 {
 
 .section {
   display: inline-block;
-  width: 30%;
+  /* width: 30%; */
   vertical-align: top;
+}
+
+#selfcare-list {
+  width: 45%;
+}
+
+#support-list {
+  width: 30%;
+}
+
+#breathing {
+  width: 20%;
 }

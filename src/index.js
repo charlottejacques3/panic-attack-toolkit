@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import PanicDashboard from './PanicDashboard';
+import Header from './Header';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <Header />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

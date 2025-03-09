@@ -60,7 +60,7 @@ function SupportList() {
         <script>
 
         </script>
-        <div id = "support-list">
+        <div id = "contact-list">
             <h1 id="support-h1">Support</h1>
             <ContactDetail name="Emergency" phone="911"/>
             <ContactDetail name="Suicide Prevention Line" phone="[phone]"/>
