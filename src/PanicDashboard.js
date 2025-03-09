@@ -8,6 +8,8 @@ import PanicButton from './PanicButton';
 import SuggestionPopup from './SuggestionPopup';
 import BreathingExercise from './BreathingExe';
 
+import candle from './images/candle_gif.gif';
+
 function PanicDashboard() {
   const [suggestionsOpen, setSuggestionsOpen] = useState(false);
 
@@ -21,12 +23,17 @@ function PanicDashboard() {
       </div>
       <div class="section" id="breathing">
         <BreathingExercise></BreathingExercise>
+        <div className='candle-section'>
+          <p id="candle-text">Focus on the flame</p>
+          <img src={candle} id="candle"></img>
+        </div>
       </div>
 
       {/* suggestion popup */}
       {suggestionsOpen ? (
-          <SuggestionPopup onClose={() => setSuggestionsOpen(false)}>
-          </SuggestionPopup>
+          <SuggestionPopup 
+            onClose={() => setSuggestionsOpen(false)}
+            />
         ) : null} 
     </div>
   );

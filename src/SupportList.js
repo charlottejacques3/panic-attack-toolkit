@@ -63,7 +63,7 @@ function SupportList() {
         <div id = "contact-list">
             <h1 id="support-h1">Support</h1>
             <ContactDetail name="Emergency" phone="911"/>
-            <ContactDetail name="Suicide Prevention Line" phone="[phone]"/>
+            <ContactDetail name="Suicide Prevention Line" phone="988"/>
             {data.map((item, index) => (
                 <ContactDetail key={index} name={item['name']} phone={item['phone']}/>
             ))}

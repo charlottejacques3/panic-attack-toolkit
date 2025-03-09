@@ -4,11 +4,10 @@ import { getDatabase, ref, set, push, onValue } from "firebase/database";
 // referenced tutorial: https://deadsimplechat.com/blog/creating-a-reusable-pop-up-modal-in-react-from-scratch/
 
 
-function SuggestionPopup({ onClose }) {
+function SuggestionPopup({ onClose }) {//, saveSuggestion, suggestions }) {
 
     const [suggestions, updateSuggestions] = useState([
         'Go for a walk',
-        'Call a friend',
         'Go for a run',
         'Listen to music',
         'Watch funny videos']);
@@ -48,7 +47,7 @@ function SuggestionPopup({ onClose }) {
     return (
         <div style={styles.overlay}>
             <div style={styles.modal}>
-                <h2>Here's a suggestion for you:</h2>
+                <h2>Maybe this would help:</h2>
                 <p>{suggestion}</p>
                 <button onClick={() => regenerateSuggestion(randomSuggestion(false))}>Refresh</button>
                 <button onClick={saveSuggestion}>Add This</button>

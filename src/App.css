@@ -1,7 +1,13 @@
 #main-page {
-
   vertical-align: center;
   float: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+body {
+  background-color: #96DED1;
 }
 
 #panic-image {
@@ -18,7 +24,8 @@
 }
 
 #app {
-  margin: 20px;
+  padding: 20px;
+  background-color: #EDC8F8;
   /* display: inline-flex; */
   /* flex-direction: row; */
 }
@@ -56,3 +63,27 @@ h1 {
 #breathing {
   width: 20%;
 }
+
+h2 {
+  font-weight: bold;
+}
+
+#candle {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 20px 0px 20px;
+}
+
+#candle-text {
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 20px 0px 20px;
+  width: 100%;
+}
+
+/* .candle-section {
+
+} */

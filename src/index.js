@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
+  BrowserRouter
 } from 'react-router-dom';
 import PanicDashboard from './PanicDashboard';
 import Header from './Header';

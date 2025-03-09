@@ -14,7 +14,7 @@ li {
 .del-button {
     padding: 0px;
     margin: 0px;
-    background-color: white;
+    background-color: transparent;
     height: 30px;
 }
 
